@@ -1,29 +1,32 @@
 import { useState, useEffect } from 'react'
+import { useGameContext } from './context';
 
-const Cards = ({cards, shuffleCards, setShowButtons, setShowCards, showCards}) => {
-	const [flippedCards, setFlippedCards] = useState([]);
-	const [matchedCards, setMatchedCards] = useState([]);
-	const [winState, setWinState] = useState(false);
-
+const Cards = ({intervalId}) => {
+	const {
+		cards,
+		shuffleCards,
+		showButtons,
+		displayCards,
+		hideCards,
+		stopTimer,
+		flippedCards,
+		matchedCards,
+		setFlippedCards,
+		setMatchedCards,
+	} = useGameContext();
 
 	const handleClick = (id, color) => {
 		if (flippedCards.length === 2) {
 			return;
 		}
-		setFlippedCards((prevFlippedCards) => [...prevFlippedCards, { id, color}])
+		setFlippedCards([...flippedCards, { id, color}])
 	}
-
-	useEffect(() => {
-		if (matchedCards.length === cards.length) {
-			setWinState(true);
-		}
-	}, [matchedCards, cards])
 
 	useEffect(() => {
 		if (flippedCards.length === 2) {
 			const [card1, card2] = flippedCards;
 			if (card1.color === card2.color) {
-				setMatchedCards((prevMatchedCards) => [...prevMatchedCards, card1.id, card2.id])
+				setMatchedCards([...matchedCards, card1.id, card2.id])
 				setFlippedCards([]);
 			} else {
 				setTimeout(() => {
@@ -33,17 +36,11 @@ const Cards = ({cards, shuffleCards, setShowButtons, setShowCards, showCards}) =
 		}
 	}, [flippedCards])
 
-	const newGame = () => {
-		setWinState(false);
-		setMatchedCards([]);
-		shuffleCards();
-		setShowButtons(true);
-		setShowCards(false)
-	}
+
 
   return (
 		<>
-			<div className={`${showCards ? 'card-container' : 'hide'}`}>
+			<div className={`${displayCards ? 'card-container' : 'hide'}`}>
 				{cards.map(card => {
 					const {id, color} = card;
 					const isCardFlipped = flippedCards.some((flippedCard) => flippedCard.id === card.id);
@@ -56,10 +53,6 @@ const Cards = ({cards, shuffleCards, setShowButtons, setShowCards, showCards}) =
 						>
 						</button>
 				})}
-			</div>
-			<div className={`${winState ? 'show' : 'hide'}`}>
-				<p className='win-message'>you won!</p>
-				<button className='btn' onClick={newGame}>play again?</button>
 			</div>
 		</>
   )

@@ -71,7 +71,7 @@ main {
 }
 
 .btn {
-  background-color: aliceblue;
+  background-color: orange;
   border: none;
   text-transform: capitalize;
   padding: 1rem;
@@ -87,8 +87,28 @@ main {
 }
 
 .btn:hover {
-  background-color:chartreuse;
-  transition: 0.5s;
+  background-color: blueviolet;
+  color: white;
+  transition: 1s;
+}
+
+.best-time, .timer {
+  text-transform: capitalize;
+  background-color: transparent;
+  padding: 0.5rem;
+  color: white;
+  font-weight: bold;
+}
+
+.best-time {
+  color: black;
+}
+
+.time-container {
+  display: flex;
+  gap: 3rem;
+  margin-top: 1rem;
+  background-image: linear-gradient(to right, orange, blueviolet);
 }
 
 @media (min-width: 800px) {
