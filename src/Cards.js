@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react'
 
-const Cards = ({cards, shuffleCards, setShowButtons}) => {
+const Cards = ({cards, shuffleCards, setShowButtons, setShowCards, showCards}) => {
 	const [flippedCards, setFlippedCards] = useState([]);
 	const [matchedCards, setMatchedCards] = useState([]);
 	const [winState, setWinState] = useState(false);
+
 
 	const handleClick = (id, color) => {
 		if (flippedCards.length === 2) {
@@ -37,11 +38,12 @@ const Cards = ({cards, shuffleCards, setShowButtons}) => {
 		setMatchedCards([]);
 		shuffleCards();
 		setShowButtons(true);
+		setShowCards(false)
 	}
 
   return (
 		<>
-			<div className='card-container'>
+			<div className={`${showCards ? 'card-container' : 'hide'}`}>
 				{cards.map(card => {
 					const {id, color} = card;
 					const isCardFlipped = flippedCards.some((flippedCard) => flippedCard.id === card.id);

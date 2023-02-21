@@ -6,18 +6,12 @@ import { useState } from 'react'
 function App() {
   const [cards, setCards] = useState(data);
   const [showButtons, setShowButtons] = useState(true);
+  const [showCards, setShowCards] = useState(false);
 
-  const easyGame = () => {
-    shuffleCards(6);
+  const gameDifficulty = (difficulty) => {
+    shuffleCards(difficulty);
     setShowButtons(false)
-  }
-  const mediumGame = () => {
-    shuffleCards(10)
-    setShowButtons(false)
-  }
-  const hardGame = () => {
-    shuffleCards(20);
-    setShowButtons(false)
+    setShowCards(true)
   }
 
   const shuffleCards = (num) => {
@@ -33,11 +27,11 @@ function App() {
     <main>
       <div className='title'>memory game</div>
       <div className={`${showButtons ? 'btn-container': 'hide'}`}>
-        <button className='btn' onClick={easyGame}>easy</button>
-        <button className='btn' onClick={mediumGame}>medium</button>
-        <button className='btn' onClick={hardGame}>hard</button>
+        <button className='btn' onClick={() => gameDifficulty(6)}>easy</button>
+        <button className='btn' onClick={() => gameDifficulty(10)}>medium</button>
+        <button className='btn' onClick={() => gameDifficulty(20)}>hard</button>
       </div>
-      <Cards cards={cards} shuffleCards={shuffleCards} setShowButtons={setShowButtons}/>
+      <Cards cards={cards} shuffleCards={shuffleCards} setShowButtons={setShowButtons} setShowCards={setShowCards} showCards={showCards}/>
     </main>
   );
 }
