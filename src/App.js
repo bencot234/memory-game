@@ -40,7 +40,7 @@ function App() {
 
   const [secondsElapsed, setSecondsElapsed] = useState(0);
   const [winState, setWinState] = useState(false);
-  const [topScore, setTopScore] = useState(0);
+  const [topScore, setTopScore] = useState(getTopScore());
   const [difficulty, setDifficulty] = useState('');
 	const intervalId = useRef(null);
 
