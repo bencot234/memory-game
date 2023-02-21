@@ -17,7 +17,7 @@ const Cards = ({cards, shuffleCards, setShowButtons, setShowCards, showCards}) =
 		if (matchedCards.length === cards.length) {
 			setWinState(true);
 		}
-	}, [matchedCards])
+	}, [matchedCards, cards])
 
 	useEffect(() => {
 		if (flippedCards.length === 2) {
