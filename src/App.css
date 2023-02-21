@@ -1,6 +1,6 @@
 .card {
-  height: 100px;
-  width: 140px;
+  height: 50px;
+  width: 60px;
   cursor: pointer;
   border-radius: 1rem;
   border: none;
@@ -8,9 +8,9 @@
 
 .card-container {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 3rem;
-  width: 1000px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
+  width: 300px;
 }
 
 .blue {
@@ -28,13 +28,79 @@
 .orange {
   background-color: orange;
 }
+.aquamarine {
+  background-color: aquamarine;
+}
+.bisque {
+  background-color: bisque;
+}
+.blueviolet {
+  background-color: blueviolet;
+}
+.cadetblue {
+  background-color: cadetblue;
+}
+.chocolate {
+  background-color: chocolate;
+}
 .gray {
   background-color: gray;
 }
 
 .show {
-  display: block;
+  display: flex;
+  flex-direction: column;
 }
 .hide {
   display: none;
+}
+
+.title, .win-message {
+  text-align: center;
+  text-transform: uppercase;
+  margin: 2rem;
+  font-weight: bolder;
+  letter-spacing: 1px;
+}
+
+main {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.btn {
+  background-color: aliceblue;
+  border: none;
+  text-transform: capitalize;
+  padding: 1rem;
+  cursor: pointer;
+  transition: 0.5s;
+  font-weight: bold;
+}
+
+.btn-container {
+  display: flex;
+  gap: 1rem;
+  margin: 1rem;
+}
+
+.btn:hover {
+  background-color:chartreuse;
+  transition: 0.5s;
+}
+
+@media (min-width: 800px) {
+  .card {
+      height: 100px;
+      width: 120px;
+  }
+
+  .card-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 50px;
+    width: 800px;
+  }
 }

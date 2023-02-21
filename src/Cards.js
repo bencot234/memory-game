@@ -1,25 +1,9 @@
 import { useState, useEffect } from 'react'
-import data from './data'
 
-
-const Cards = () => {
-	const [cards, setCards] = useState(data);
+const Cards = ({cards, shuffleCards, setShowButtons}) => {
 	const [flippedCards, setFlippedCards] = useState([]);
 	const [matchedCards, setMatchedCards] = useState([]);
 	const [winState, setWinState] = useState(false);
-
-	const shuffleCards = () => {
-		const shuffledCards = [...cards]
-		for (let i = shuffledCards.length - 1; i > 0; i--) {
-			const j = Math.floor(Math.random() * (i + 1));
-			[shuffledCards[i], shuffledCards[j]] = [shuffledCards[j], shuffledCards[i]];
-		}
-		setCards(shuffledCards)
-	}
-
-	useEffect(() => {
-		shuffleCards()
-	}, []);
 
 	const handleClick = (id, color) => {
 		if (flippedCards.length === 2) {
@@ -52,6 +36,7 @@ const Cards = () => {
 		setWinState(false);
 		setMatchedCards([]);
 		shuffleCards();
+		setShowButtons(true);
 	}
 
   return (
@@ -71,8 +56,8 @@ const Cards = () => {
 				})}
 			</div>
 			<div className={`${winState ? 'show' : 'hide'}`}>
-				<p>you won!</p>
-				<button onClick={newGame}>play again?</button>
+				<p className='win-message'>you won!</p>
+				<button className='btn' onClick={newGame}>play again?</button>
 			</div>
 		</>
   )

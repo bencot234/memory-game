@@ -39,6 +39,46 @@ const cards = [
         id: 10,
         color: 'orange',
     },
+    {
+        id: 11,
+        color: 'aquamarine',
+    },
+    {
+        id: 12,
+        color: 'aquamarine',
+    },
+    {
+        id: 13,
+        color: 'bisque',
+    },
+    {
+        id: 14,
+        color: 'bisque',
+    },
+    {
+        id: 15,
+        color: 'blueviolet',
+    },
+    {
+        id: 16,
+        color: 'blueviolet',
+    },
+    {
+        id: 17,
+        color: 'cadetblue',
+    },
+    {
+        id: 18,
+        color: 'cadetblue',
+    },
+    {
+        id: 19,
+        color: 'chocolate',
+    },
+    {
+        id: 20,
+        color: 'chocolate',
+    },
 ];
 
 export default cards;
