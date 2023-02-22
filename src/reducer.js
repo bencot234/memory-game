@@ -36,7 +36,7 @@ const reducer = (state, action) => {
     if (action.type === 'SET_MATCHED_CARDS') {
         return {...state, matchedCards: action.payload}
     }
-    return state;
+    // return state;
 }
 
 export default reducer;

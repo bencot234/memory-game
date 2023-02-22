@@ -1,14 +1,10 @@
-import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
 import { useGameContext } from './context';
 
-const Cards = ({intervalId}) => {
+const Cards = () => {
 	const {
 		cards,
-		shuffleCards,
-		showButtons,
 		displayCards,
-		hideCards,
-		stopTimer,
 		flippedCards,
 		matchedCards,
 		setFlippedCards,
@@ -39,22 +35,20 @@ const Cards = ({intervalId}) => {
 
 
   return (
-		<>
-			<div className={`${displayCards ? 'card-container' : 'hide'}`}>
-				{cards.map(card => {
-					const {id, color} = card;
-					const isCardFlipped = flippedCards.some((flippedCard) => flippedCard.id === card.id);
-					const isCardMatched = matchedCards.includes(card.id);
-				
-					return <button
-							key={id}
-							className={`card ${isCardFlipped || isCardMatched ? color : 'gray'}`}
-							onClick={() => handleClick(id, color)}
-						>
-						</button>
-				})}
-			</div>
-		</>
+	<div className={`${displayCards ? 'card-container' : 'hide'}`}>
+		{cards.map(card => {
+			const {id, color} = card;
+			const isCardFlipped = flippedCards.some((flippedCard) => flippedCard.id === card.id);
+			const isCardMatched = matchedCards.includes(card.id);
+
+			return <div
+					key={id}
+					className={`card ${isCardFlipped || isCardMatched ? color : 'gray'}`}
+					onClick={() => handleClick(id, color)}
+				>
+				</div>
+		})}
+	</div>
   )
 }
 

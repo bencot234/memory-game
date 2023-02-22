@@ -55,7 +55,7 @@ function App() {
         localStorage.setItem(difficulty+'_score', JSON.stringify(secondsElapsed))
       }
 		}
-	}, [matchedCards, cards])
+	}, [matchedCards, cards.length])
 
   useEffect(() => {
 		if (isTimerRunning) {
@@ -103,8 +103,8 @@ function App() {
   return (
     <main>
       <div className='time-container'>
-        <div className='best-time'>best time: {formatTime(topScore)}</div>
-        <div className='timer'>Time: {formatTime(secondsElapsed)}</div>
+        <div className='best-time'>best: {formatTime(topScore)}</div>
+        <div className='timer'>time: {formatTime(secondsElapsed)}</div>
       </div>
       <div className='title'>memory game</div>
       <div className={`${displayButtons ? 'btn-container': 'hide'}`}>
